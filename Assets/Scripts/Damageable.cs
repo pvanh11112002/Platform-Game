@@ -9,8 +9,7 @@ public class Damageable : MonoBehaviour
     public UnityEvent damageableDeath;
     public UnityEvent<int, int> healthChanged;
     Animator animator;
-    [SerializeField]
-    private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth = 100;
     public int MaxHealth
     { 
         get 
@@ -22,8 +21,7 @@ public class Damageable : MonoBehaviour
             _maxHealth = value;        
         } 
     }
-    [SerializeField]
-    private int _health = 100;
+    [SerializeField] private int _health = 100;
     public int Health
     {
         get
@@ -40,15 +38,10 @@ public class Damageable : MonoBehaviour
             }
         }
     }
-    public bool _isAlive = true;
-    
-    [SerializeField]
-    private bool isInvincible = false;
-
+    public bool _isAlive = true;   
+    [SerializeField] private bool isInvincible = false;
     private float timeSinceHit = 0;
-    [SerializeField]
-    private float invincibilityTimer = 1f;
-
+    [SerializeField] private float invincibilityTimer = 1f;
     public bool IsAlive
     {
         get 
@@ -93,11 +86,6 @@ public class Damageable : MonoBehaviour
             }
             timeSinceHit += Time.deltaTime;
         }
-        //if(Health <= 0)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //Hit(10);
     }
     public bool Hit(int damage, Vector2 knockback)
     {
@@ -128,5 +116,10 @@ public class Damageable : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public void Respawn()
+    {
+        _health = _maxHealth;
+        _isAlive = true;
     }
 }

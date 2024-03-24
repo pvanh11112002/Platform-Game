@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 0.5
+  timeElapsed: 0
 --- !u!114 &2215597437245570069
 MonoBehaviour:
   m_ObjectHideFlags: 1

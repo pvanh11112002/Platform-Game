@@ -48,6 +48,7 @@ MonoBehaviour:
   damageTextPrefabs: {fileID: 5842579537641099053, guid: 94d98afb851a5084e97067ece3fc7d4b, type: 3}
   healthTextPrefabs: {fileID: 5842579537641099053, guid: ad31103066a31894b936f00eed433ca9, type: 3}
   gameCanvas: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!114 &4564837047228561786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466603500446016786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 

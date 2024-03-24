@@ -5,14 +5,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     public GameObject damageTextPrefabs;
     public GameObject healthTextPrefabs;
     public Canvas gameCanvas;
+
+    Dictionary<System.Type, UICanvas> canvasActives = new Dictionary<System.Type, UICanvas> ();
+    Dictionary<System.Type, UICanvas> canvasPrefabs = new Dictionary<System.Type, UICanvas>();
+    [SerializeField] Transform parent;
     private void Awake()
     {
-        gameCanvas= FindObjectOfType<Canvas>();       
+        gameCanvas= FindObjectOfType<Canvas>();
+
+        UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
+        for(int i = 0; i < prefabs.Length; i++)
+        {
+            canvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
+        }    
     }
     private void OnEnable()
     {
@@ -46,21 +56,82 @@ public class UIManager : MonoBehaviour
         TMP_Text tmpText = Instantiate(healthTextPrefabs, spawnPos, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
         tmpText.text = healthRestored.ToString();
     }
-    public void OnEscape(InputAction.CallbackContext context)
-    {
-        if(context.started)
-        {
-            #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
-                Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            #endif
+    //public void OnEscape(InputAction.CallbackContext context)
+    //{
+    //    if(context.started)
+    //    {
+    //        #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
+    //            Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+    //        #endif
 
-            #if (UNITY_EDITOR)
-                    UnityEditor.EditorApplication.isPlaying= false;
-            #elif (UNITY_STANDALONE)
-                    Application.Quit();
-            #elif (UNITY_WEBGL)
-                    SceneManager.LoadScene("QuitScene")
-            #endif
+    //        #if (UNITY_EDITOR)
+    //                UnityEditor.EditorApplication.isPlaying= false;
+    //        #elif (UNITY_STANDALONE)
+    //                Application.Quit();
+    //        #elif (UNITY_WEBGL)
+    //                SceneManager.LoadScene("QuitScene");
+    //        #endif
+    //    }
+    //}
+
+    // Mo canvas
+    public T OpenUI<T>() where T : UICanvas
+    {
+        T canvas = GetUI<T>();
+        canvas.SetUp();
+        canvas.Open();
+        return canvas;
+    }
+    // Dong canvas
+    public void CloseUI<T>(float time) where T : UICanvas
+    {
+        if(isLoaded<T>())
+        {
+            canvasActives[typeof(T)].Close(time);
+        }    
+    }
+    // Dong canvas luon
+    public void CloseDirectly<T>() where T : UICanvas
+    {
+        if (isLoaded<T>())
+        {
+            canvasActives[typeof(T)].CloseDirectly();
         }
     }
+    // Kiem tra xem canvas co duoc tai chua
+    public bool isLoaded<T>() where T : UICanvas
+    {
+        return canvasActives.ContainsKey(typeof(T)) && canvasActives[typeof(T)] != null;
+    }
+    // Kiem tra xem canvas active chua
+    public bool isOpened<T>() where T : UICanvas
+    {
+        return isLoaded<T>() && canvasActives[typeof(T)].gameObject.activeSelf;
+    }
+    // Lay Canvas
+    public T GetUI<T>() where T : UICanvas
+    {
+        if(!isLoaded<T>())
+        {
+            T prefab = GetUIPrefabs<T>();
+            T canvas = Instantiate(prefab, parent);
+            canvasActives[typeof(T)] = canvas;
+        }    
+        return canvasActives[typeof(T)] as T;
+    }   
+    private T GetUIPrefabs<T>() where T : UICanvas
+    {
+        
+        return canvasPrefabs[typeof(T)] as T;
+    }    
+    public void CloseAll()
+    {
+        foreach (var canvas in canvasActives)
+        {
+            if(canvas.Value != null && canvas.Value.gameObject.activeSelf)
+            {
+                canvas.Value.Close(0);
+            }    
+        }    
+    }    
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class FadeRomoveBehaviour : StateMachineBehaviour
 {
     public float fadeTime = 0.5f;
-    private float timeElapsed = 0f;
+    public float timeElapsed = 0f;
+    float defaultNumOfColor = 255;
     SpriteRenderer spriteRenderer;
     GameObject objToRemove;
     Color startColor;
@@ -29,8 +30,16 @@ public class FadeRomoveBehaviour : StateMachineBehaviour
         //từng frame sẽ cập nhật lại màu
         if(timeElapsed > fadeTime)
         {
-            Destroy(objToRemove);
+            
+            objToRemove.SetActive(false);
+            spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, defaultNumOfColor);
+            timeElapsed = 0;
+
         }
+    }
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
     }
 
 

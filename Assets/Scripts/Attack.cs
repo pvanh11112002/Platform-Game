@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
         {
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y); // Config hướng đẩy lùi của attack
             damageable.Hit(attackDamage, deliveredKnockback);
-            Debug.Log(collision.name + "hit for" + attackDamage);
+            
         }
     }
 

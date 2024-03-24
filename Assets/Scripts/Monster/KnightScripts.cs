@@ -79,6 +79,11 @@ public class KnightScripts : MonoBehaviour
         damageable= GetComponent<Damageable>();
         
     }
+    private void OnEnable()
+    {
+        anim.GetBehaviour<FadeRomoveBehaviour>();
+        damageable.Respawn();
+    }
     void Update()
     {
         HasTarget = attackZone.detectedColliders.Count > 0;
@@ -114,16 +119,11 @@ public class KnightScripts : MonoBehaviour
         {
             WalkDirection= WalkableDirection.Right;
         }
-        else
-        {
-            Debug.LogError("Hihihaha");
-        }
     }
     public void OnHit(int damage, Vector2 knockback)
     {
         damageable.LockVelocity = true;
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
-        Debug.Log("x:" + knockback.x + "/// rbvelo: " + rb.velocity.y + "knockback.y: " + knockback.y);
     }
     public void OnCliffDetected()
     {
@@ -131,5 +131,9 @@ public class KnightScripts : MonoBehaviour
         {
             FlipDirection();
         }
+    }
+    public void OnDespawn()
+    {
+        this.gameObject.SetActive(false);
     }
 }

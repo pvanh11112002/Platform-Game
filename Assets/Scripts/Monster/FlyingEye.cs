@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingEye : MonoBehaviour
-{
-    
+{    
     public detectionzone biteDetectionzone;
     Animator anim;
     Rigidbody2D rb;
@@ -13,7 +12,7 @@ public class FlyingEye : MonoBehaviour
     Damageable damageable;
     public List<Transform> waypoints;
     public float flightSpeed = 2f;
-    int waypointNum = 0;
+    [SerializeField] int waypointNum = 0;
     Transform nextWaypoint;
     public float waypointReachDistance = 0.1f;
     public Collider2D deathCollider;
@@ -51,6 +50,7 @@ public class FlyingEye : MonoBehaviour
     void OnEnable()
     {
         damageable.damageableDeath.AddListener(OnDeath);
+        damageable.Respawn();
     }
 
     // Update is called once per frame
@@ -111,8 +111,9 @@ public class FlyingEye : MonoBehaviour
         }
     }
     public void OnDeath()
-    {   
-        rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, rb.velocity.y);
+    {
+        gameObject.SetActive(false);
+        //rb.gravityScale = 2f;
+        //rb.velocity = new Vector2(0, rb.velocity.y);
     }
 }
