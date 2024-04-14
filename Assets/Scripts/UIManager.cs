@@ -22,7 +22,8 @@ public class UIManager : Singleton<UIManager>
         for(int i = 0; i < prefabs.Length; i++)
         {
             canvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
-        }    
+        }
+        /*UIManager.Instance.*/OpenUI<CanvasMainMenu>();
     }
     private void OnEnable()
     {

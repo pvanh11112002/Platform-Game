@@ -8,7 +8,6 @@ public class UICanvas : MonoBehaviour
     // Goi truoc khi canvas duoc active
     public virtual void SetUp()
     {
-        // Xu ly tai tho
         RectTransform rect = GetComponent<RectTransform>();
         float ratio = (float)Screen.width / (float)Screen.height;
         if(ratio > 2.1f)
