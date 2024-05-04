@@ -6,12 +6,13 @@ public class PoolingObject : Singleton<PoolingObject>
 {
     private List<GameObject> knightPooled = new List<GameObject>();
     public GameObject knightPrefabs;
-    // Start is called before the first frame update
+    public int numberOfKnight = 10;
+    
     void Start()
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < numberOfKnight; j++)
         {
-            GameObject objBot = Instantiate(knightPrefabs);
+            GameObject objBot = Instantiate(knightPrefabs,this.gameObject.transform);
             objBot.SetActive(false);
             knightPooled.Add(objBot);
         }

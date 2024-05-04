@@ -5,53 +5,28 @@ using UnityEngine.InputSystem;
 
 public class test : MonoBehaviour
 {
-    //Rigidbody2D rb;
-    //public float donhay = 10f;
-    //// Start is called before the first frame update
-    //void Start()
+    
+    //private void Start()
     //{
-    //    rb = GetComponent<Rigidbody2D>();   
+    //    UIManager.Instance.OpenUI<CanvasMainMenu>();
     //}
-
-    //// Update is called once per frame
-    ////void Update()
-    ////{
-    ////    if(Input.GetKeyDown(KeyCode.Space))
-    ////    {
-    ////        rb.velocity = new Vector2(0, donhay);
-    ////        Debug.Log("hihihi"); 
-    ////    }
-
-    ////}
-    //public void OnJump(InputAction.CallbackContext context)
+    //private void Update()
     //{
-    //    if (context.started)
+    //    if(Input.GetKeyDown(KeyCode.Alpha1))
     //    {
-    //        rb.velocity = new Vector2(0, donhay);
-    //        Debug.Log(rb.velocity.y);
+    //        UIManager.Instance.CloseAll();
+    //        UIManager.Instance.GetUI<CanvasGamePlay>();
     //    }
-    //}
-    private void Start()
-    {
-        UIManager.Instance.OpenUI<CanvasMainMenu>();
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            UIManager.Instance.CloseAll();
-            UIManager.Instance.GetUI<CanvasGamePlay>();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            UIManager.Instance.CloseAll();
-            UIManager.Instance.GetUI<CanvasVictory>();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            UIManager.Instance.CloseAll();
-            UIManager.Instance.GetUI<CanvasFail>();
-        }
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        UIManager.Instance.CloseAll();
+    //        UIManager.Instance.GetUI<CanvasVictory>();
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        UIManager.Instance.CloseAll();
+    //        UIManager.Instance.GetUI<CanvasFail>();
+    //    }
 
-    }
+    //}
 }

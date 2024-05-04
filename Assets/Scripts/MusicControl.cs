@@ -8,10 +8,8 @@ public class MusicControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        introSource.Play();
-        Debug.Log("This is Intro");
-        loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length);
-        Debug.Log("This is loop");       
+        introSource.Play();       
+        loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length); 
     }
 
     

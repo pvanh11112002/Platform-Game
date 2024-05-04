@@ -6,15 +6,13 @@ public class SpawnMonster : MonoBehaviour
 {
     [SerializeField] Transform[] gateToSpawnMons;
     [SerializeField] float elapsedTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-    }
-
-    // Update is called once per frame
+    [SerializeField] int monsHasSpawn = 0;
     void Update()
     {
+        if (monsHasSpawn >= PoolingObject.Instance.numberOfKnight)
+        {
+            return;
+        }    
         elapsedTime += Time.deltaTime;
         if(elapsedTime > 5)
         {
@@ -27,6 +25,7 @@ public class SpawnMonster : MonoBehaviour
                     //knight.transform.rotation = knight.rotation;
                     knight.SetActive(true);
                 }
+                monsHasSpawn++;
             }
             elapsedTime = 0;
         }    

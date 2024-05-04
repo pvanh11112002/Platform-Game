@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CanvasGamePlay : UICanvas
 {
-    public void SettingButton()
-    {
-        UIManager.Instance.OpenUI<CanvasSetting>();
-    }
+    //public void SettingButton()
+    //{
+    //    UIManager.Instance.OpenUI<CanvasSetting>();
+    //}
 }
