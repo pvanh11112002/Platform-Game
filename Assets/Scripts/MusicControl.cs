@@ -9,7 +9,7 @@ public class MusicControl : MonoBehaviour
     void Start()
     {
         introSource.Play();       
-        loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length); 
+        //loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length); 
     }
 
     

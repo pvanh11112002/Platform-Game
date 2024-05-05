@@ -136,9 +136,7 @@ public class Player2Controller : MonoBehaviour
         else 
         {
             IsMoving= false;
-        }
-        Debug.Log("On Move dang hoat dong");
-        
+        }        
     }
     private void SetFacingDirection(Vector2 moveInput)
     {

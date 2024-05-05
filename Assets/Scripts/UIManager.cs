@@ -11,19 +11,12 @@ public class UIManager : Singleton<UIManager>
     public GameObject healthTextPrefabs;
     public Canvas gameCanvas;
 
-    //Dictionary<System.Type, UICanvas> canvasActives = new Dictionary<System.Type, UICanvas> ();
-    //Dictionary<System.Type, UICanvas> canvasPrefabs = new Dictionary<System.Type, UICanvas>();
-    //[SerializeField] Transform parent;
+    
     private void Awake()
     {
         gameCanvas= FindObjectOfType<Canvas>();
 
-        //UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
-        //for(int i = 0; i < prefabs.Length; i++)
-        //{
-        //    canvasPrefabs.Add(prefabs[i].GetType(), prefabs[i]);
-        //}
-        ///*UIManager.Instance.*/OpenUI<CanvasMainMenu>();
+        
     }
     private void OnEnable()
     {

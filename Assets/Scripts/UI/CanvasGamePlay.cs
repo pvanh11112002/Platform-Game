@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class CanvasGamePlay : UICanvas
 {
-    //public void SettingButton()
-    //{
-    //    UIManager.Instance.OpenUI<CanvasSetting>();
-    //}
+    private void OnEnable()
+    {
+        GameManager.Instance.currentState = GameState.Play;
+    }
+    public void SettingButton()
+    {
+        MainMenuUIManager.Instance.OpenUI<CanvasSetting>();
+    }
 }

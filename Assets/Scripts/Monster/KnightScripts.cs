@@ -86,28 +86,32 @@ public class KnightScripts : MonoBehaviour
     }
     void Update()
     {
-        HasTarget = attackZone.detectedColliders.Count > 0;
-        if(attackCooldown > 0)
+        if(GameManager.Instance.currentState == GameState.Play)
         {
-            attackCooldown -= Time.deltaTime;
-        }
+            HasTarget = attackZone.detectedColliders.Count > 0;
+            if (attackCooldown > 0)
+            {
+                attackCooldown -= Time.deltaTime;
+            }
+        }       
     }
     void FixedUpdate()
     {
-        if(touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        //if (GameManager.Instance.currentState == GameState.Play)
+        //{
+            
+        //}
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
         {
             FlipDirection();
         }
-        if(!damageable.LockVelocity)
+        if (!damageable.LockVelocity)
         {
-            if (CanMove && touchingDirections.IsGrounded )
+            if (CanMove && touchingDirections.IsGrounded)
                 rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
             else
                 rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
         }
-        
-        
- 
     }
 
     private void FlipDirection()

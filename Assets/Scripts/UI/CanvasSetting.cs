@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class CanvasSetting : UICanvas
 {
-    //public void MainMenuButton()
-    //{
-    //    UIManager.Instance.CloseAll();
-    //    UIManager.Instance.OpenUI<CanvasMainMenu>();
-    //}    
-    
+    private void OnEnable()
+    {
+        GameManager.Instance.currentState = GameState.Pause;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.currentState = GameState.Play;
+    }
+    public void MainMenuButton()
+    {
+        MainMenuUIManager.Instance.CloseAll();
+        MainMenuUIManager.Instance.OpenUI<CanvasMainMenu>();
+    }
+
 }
