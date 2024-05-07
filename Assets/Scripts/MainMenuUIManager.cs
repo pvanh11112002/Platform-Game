@@ -7,7 +7,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     Dictionary<System.Type, UICanvas> canvasActives = new Dictionary<System.Type, UICanvas>();
     Dictionary<System.Type, UICanvas> canvasPrefabs = new Dictionary<System.Type, UICanvas>();
     [SerializeField] Transform parent;
-    private void Awake()
+    private void Start()
     {
         UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
         for (int i = 0; i < prefabs.Length; i++)

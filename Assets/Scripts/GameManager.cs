@@ -9,12 +9,10 @@ public enum GameState
 public class GameManager : Singleton<GameManager>
 {
     public GameState currentState;
-    private void Awake()
-    {
-        currentState = GameState.Pause;
-    }
     void Start()
     {
+        currentState = GameState.Pause;
         MainMenuUIManager.Instance.OpenUI<CanvasMainMenu>();
     }  
+
 }

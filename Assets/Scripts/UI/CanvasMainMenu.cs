@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class CanvasMainMenu : UICanvas
 {
     public void PlayButton()
     {
-        Close(0);
         MainMenuUIManager.Instance.OpenUI<CanvasGamePlay>();
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        GameManager.Instance.currentState = GameState.Play;
+        SceneManager.LoadScene(DataManager.Instance.userData.currentLevel, LoadSceneMode.Additive);
+        
+        Close(0);
+        
     }
     public void SettingButton()
     {

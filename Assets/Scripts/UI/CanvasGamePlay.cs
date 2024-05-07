@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CanvasGamePlay : UICanvas
 {
-    private void OnEnable()
-    {
-        GameManager.Instance.currentState = GameState.Play;
-    }
+    
     public void SettingButton()
     {
+        GameManager.Instance.currentState = GameState.Pause;
         MainMenuUIManager.Instance.OpenUI<CanvasSetting>();
     }
 }
