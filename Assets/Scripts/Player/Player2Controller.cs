@@ -107,7 +107,7 @@ public class Player2Controller : MonoBehaviour
             return animator.GetBool(AnimationString.canMove);
         }
     }
-
+    
     
 
     void Awake()

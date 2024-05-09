@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2315861456712348967}
   - component: {fileID: 788893754010285450}
   - component: {fileID: 6522077748256670798}
-  - component: {fileID: 5719454577283791327}
+  - component: {fileID: 3313885607761158044}
   m_Layer: 7
   m_Name: Player2
   m_TagString: Player
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 8
-  jumpImpulse: 10
+  jumpImpulse: 8
   airWalkSpeed: 3
   _isMoving: 0
   _isRunning: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 2069149310697684581}
   projectilePrefab: {fileID: 7333760894364207075, guid: cdae64651721b63409fa367735becba9, type: 3}
---- !u!114 &5719454577283791327
+--- !u!114 &3313885607761158044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,19 +436,67 @@ MonoBehaviour:
     m_ActionId: b82a75b5-27f2-415f-a9f4-eb8d91c670ef
     m_ActionName: Player/Look[/Mouse/delta,/Touchscreen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313086322281249504}
+        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: cfaaad5e-93e8-496e-8ee3-7caa7367bf4c
     m_ActionName: Player/Attack[/Mouse/leftButton,/Touchscreen/primaryTouch/tap]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313086322281249504}
+        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3ec1b4e8-4476-4eff-a249-c3a36379b5fb
     m_ActionName: Player/Run[/Keyboard/leftCtrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313086322281249504}
+        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2e4c4a6f-dbd2-40d1-89be-2afb2b21171c
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313086322281249504}
+        m_TargetAssemblyTypeName: Player2Controller, Assembly-CSharp
+        m_MethodName: OnRangedAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 09c1ff97-bada-4f73-bb79-e8e273c23161
     m_ActionName: Player/RangedAttack[/Keyboard/h]
   - m_PersistentCalls:
